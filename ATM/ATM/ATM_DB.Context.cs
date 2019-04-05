@@ -13,10 +13,10 @@ namespace ATM
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ATM_DBEntities1 : DbContext
+    public partial class ATM_DBEntities2 : DbContext
     {
-        public ATM_DBEntities1()
-            : base("name=ATM_DBEntities1")
+        public ATM_DBEntities2()
+            : base("name=ATM_DBEntities2")
         {
         }
     

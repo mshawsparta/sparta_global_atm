@@ -165,4 +165,3 @@ C:\Users\tech-w100a\Desktop\Engineering26\week12\sparta_global_atm\ATM\ATM\obj\D
 C:\Users\tech-w100a\Desktop\Engineering26\week12\sparta_global_atm\ATM\ATM\obj\Debug\ATM.csproj.CopyComplete
 C:\Users\tech-w100a\Desktop\Engineering26\week12\sparta_global_atm\ATM\ATM\obj\Debug\ATM.dll
 C:\Users\tech-w100a\Desktop\Engineering26\week12\sparta_global_atm\ATM\ATM\obj\Debug\ATM.pdb
-C:\Users\tech-w100a\Desktop\Engineering26\week12\sparta_global_atm\ATM\ATM\obj\Debug\ATM.csprojAssemblyReference.cache

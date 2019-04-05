@@ -19,6 +19,7 @@
           <Property Name="pt4" Type="float" />
           <Property Name="pt5" Type="float" />
           <Property Name="cardNO" Type="int" />
+          <Property Name="userID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -29,9 +30,25 @@
           <Property Name="email" Type="varchar" MaxLength="100" />
           <Property Name="userPassword" Type="varchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK__Account__userID__22AA2996">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ATM_DBModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Account__userID__22AA2996" Association="Self.FK__Account__userID__22AA2996">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -52,6 +69,8 @@
           <Property Name="pt4" Type="Double" />
           <Property Name="pt5" Type="Double" />
           <Property Name="cardNO" Type="Int32" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Account__userID__22AA2996" FromRole="Account" ToRole="Users" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -61,17 +80,34 @@
           <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="userPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__userID__22AA2996" FromRole="Users" ToRole="Account" />
         </EntityType>
-        <EntityContainer Name="ATM_DBEntities1" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK__Account__userID__22AA2996">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ATM_DBEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Account__userID__22AA2996" Association="Self.FK__Account__userID__22AA2996">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ATM_DBModelStoreContainer" CdmEntityContainer="ATM_DBEntities1">
+        <EntityContainerMapping StorageEntityContainer="ATM_DBModelStoreContainer" CdmEntityContainer="ATM_DBEntities2">
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="ATM_DBModel.Account">
               <MappingFragment StoreEntitySet="Account">
@@ -85,6 +121,7 @@
                 <ScalarProperty Name="pt4" ColumnName="pt4" />
                 <ScalarProperty Name="pt5" ColumnName="pt5" />
                 <ScalarProperty Name="cardNO" ColumnName="cardNO" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

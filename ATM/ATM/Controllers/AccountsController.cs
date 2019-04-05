@@ -12,12 +12,13 @@ namespace ATM.Controllers
 {
     public class AccountsController : Controller
     {
-        private ATM_DBEntities1 db = new ATM_DBEntities1();
+        private ATM_DBEntities2 db = new ATM_DBEntities2();
 
         // GET: Accounts
         public ActionResult Index()
         {
-            return View(db.Accounts.ToList());
+            var accounts = db.Accounts.Include(a => a.User);
+            return View(accounts.ToList());
         }
 
         // GET: Accounts/Details/5
@@ -38,6 +39,7 @@ namespace ATM.Controllers
         // GET: Accounts/Create
         public ActionResult Create()
         {
+            ViewBag.userID = new SelectList(db.Users, "userID", "userName");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace ATM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "accountID,pin,balance,dayLimitUsed,pt1,pt2,pt3,pt4,pt5,cardNO")] Account account)
+        public ActionResult Create([Bind(Include = "accountID,pin,balance,dayLimitUsed,pt1,pt2,pt3,pt4,pt5,cardNO,userID")] Account account)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace ATM.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.userID = new SelectList(db.Users, "userID", "userName", account.userID);
             return View(account);
         }
 
@@ -70,6 +73,7 @@ namespace ATM.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.userID = new SelectList(db.Users, "userID", "userName", account.userID);
             return View(account);
         }
 
@@ -78,7 +82,7 @@ namespace ATM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "accountID,pin,balance,dayLimitUsed,pt1,pt2,pt3,pt4,pt5,cardNO")] Account account)
+        public ActionResult Edit([Bind(Include = "accountID,pin,balance,dayLimitUsed,pt1,pt2,pt3,pt4,pt5,cardNO,userID")] Account account)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace ATM.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.userID = new SelectList(db.Users, "userID", "userName", account.userID);
             return View(account);
         }
 

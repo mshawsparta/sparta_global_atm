@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ATM_DBModelStoreContainer" CdmEntityContainer="ATM_DBEntities1">
+  <EntityContainerMapping StorageEntityContainer="ATM_DBModelStoreContainer" CdmEntityContainer="ATM_DBEntities2">
     <EntitySetMapping Name="Accounts">
       <EntityTypeMapping TypeName="ATM_DBModel.Account">
         <MappingFragment StoreEntitySet="Account">
@@ -14,6 +14,7 @@
           <ScalarProperty Name="pt4" ColumnName="pt4" />
           <ScalarProperty Name="pt5" ColumnName="pt5" />
           <ScalarProperty Name="cardNO" ColumnName="cardNO" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

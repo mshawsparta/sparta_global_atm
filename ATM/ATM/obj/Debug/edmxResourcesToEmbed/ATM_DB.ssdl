@@ -14,6 +14,7 @@
     <Property Name="pt4" Type="float" />
     <Property Name="pt5" Type="float" />
     <Property Name="cardNO" Type="int" />
+    <Property Name="userID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -24,8 +25,24 @@
     <Property Name="email" Type="varchar" MaxLength="100" />
     <Property Name="userPassword" Type="varchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK__Account__userID__22AA2996">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ATM_DBModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Account__userID__22AA2996" Association="Self.FK__Account__userID__22AA2996">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

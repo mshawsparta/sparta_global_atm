@@ -12,7 +12,7 @@ namespace ATM.Controllers
 {
     public class UsersController : Controller
     {
-        private ATM_DBEntities1 db = new ATM_DBEntities1();
+        private ATM_DBEntities2 db = new ATM_DBEntities2();
 
         // GET: Users
         public ActionResult Index()
