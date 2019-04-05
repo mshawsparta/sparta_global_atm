@@ -132,45 +132,47 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs">
-      <DependentUpon>ATM_Model.tt</DependentUpon>
+      <DependentUpon>ATM_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="ATM_Model.Context.cs">
+    <Compile Include="ATM_DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ATM_Model.Context.tt</DependentUpon>
+      <DependentUpon>ATM_DB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ATM_Model.cs">
+    <Compile Include="ATM_DB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ATM_Model.tt</DependentUpon>
+      <DependentUpon>ATM_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ATM_Model.Designer.cs">
+    <Compile Include="ATM_DB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ATM_Model.edmx</DependentUpon>
+      <DependentUpon>ATM_DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs">
-      <DependentUpon>ATM_Model.tt</DependentUpon>
+      <DependentUpon>ATM_DB.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ATM_Model.Context.tt">
+    <Content Include="ATM_DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ATM_Model.Context.cs</LastGenOutput>
-      <DependentUpon>ATM_Model.edmx</DependentUpon>
+      <DependentUpon>ATM_DB.edmx</DependentUpon>
+      <LastGenOutput>ATM_DB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ATM_Model.tt">
+    <Content Include="ATM_DB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ATM_Model.edmx</DependentUpon>
-      <LastGenOutput>ATM_Model.cs</LastGenOutput>
+      <DependentUpon>ATM_DB.edmx</DependentUpon>
+      <LastGenOutput>ATM_DB.cs</LastGenOutput>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -182,12 +184,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="ATM_Model.edmx">
+    <EntityDeploy Include="ATM_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ATM_Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>ATM_DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ATM_Model.edmx.diagram">
-      <DependentUpon>ATM_Model.edmx</DependentUpon>
+    <Content Include="ATM_DB.edmx.diagram">
+      <DependentUpon>ATM_DB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -214,6 +216,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Accounts\Create.cshtml" />
+    <Content Include="Views\Accounts\Delete.cshtml" />
+    <Content Include="Views\Accounts\Details.cshtml" />
+    <Content Include="Views\Accounts\Edit.cshtml" />
+    <Content Include="Views\Accounts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

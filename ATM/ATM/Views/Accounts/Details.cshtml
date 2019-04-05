@@ -1,0 +1,90 @@
+﻿@model ATM.Account
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dayLimitUsed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dayLimitUsed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pt1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pt1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pt2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pt2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pt3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pt3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pt4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pt4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pt5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pt5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cardNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cardNO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.accountID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

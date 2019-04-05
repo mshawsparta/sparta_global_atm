@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ATM_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="accountID" />
+    </Key>
+    <Property Name="accountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pin" Type="Int32" />
+    <Property Name="balance" Type="Double" />
+    <Property Name="dayLimitUsed" Type="Double" />
+    <Property Name="pt1" Type="Double" />
+    <Property Name="pt2" Type="Double" />
+    <Property Name="pt3" Type="Double" />
+    <Property Name="pt4" Type="Double" />
+    <Property Name="pt5" Type="Double" />
+    <Property Name="cardNO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="userPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="ATM_DBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ATM_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="accountID" />
+    </Key>
+    <Property Name="accountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pin" Type="int" />
+    <Property Name="balance" Type="float" />
+    <Property Name="dayLimitUsed" Type="float" />
+    <Property Name="pt1" Type="float" />
+    <Property Name="pt2" Type="float" />
+    <Property Name="pt3" Type="float" />
+    <Property Name="pt4" Type="float" />
+    <Property Name="pt5" Type="float" />
+    <Property Name="cardNO" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="userPassword" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="ATM_DBModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

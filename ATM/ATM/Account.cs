@@ -23,5 +23,6 @@ namespace ATM
         public Nullable<double> pt3 { get; set; }
         public Nullable<double> pt4 { get; set; }
         public Nullable<double> pt5 { get; set; }
+        public Nullable<int> cardNO { get; set; }
     }
 }

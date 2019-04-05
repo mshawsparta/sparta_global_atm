@@ -18,6 +18,7 @@
           <Property Name="pt3" Type="float" />
           <Property Name="pt4" Type="float" />
           <Property Name="pt5" Type="float" />
+          <Property Name="cardNO" Type="int" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -50,6 +51,7 @@
           <Property Name="pt3" Type="Double" />
           <Property Name="pt4" Type="Double" />
           <Property Name="pt5" Type="Double" />
+          <Property Name="cardNO" Type="Int32" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -60,7 +62,7 @@
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="userPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="ATM_DBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ATM_DBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Users" EntityType="Self.User" />
         </EntityContainer>
@@ -69,7 +71,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ATM_DBModelStoreContainer" CdmEntityContainer="ATM_DBEntities">
+        <EntityContainerMapping StorageEntityContainer="ATM_DBModelStoreContainer" CdmEntityContainer="ATM_DBEntities1">
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="ATM_DBModel.Account">
               <MappingFragment StoreEntitySet="Account">
@@ -82,6 +84,7 @@
                 <ScalarProperty Name="pt3" ColumnName="pt3" />
                 <ScalarProperty Name="pt4" ColumnName="pt4" />
                 <ScalarProperty Name="pt5" ColumnName="pt5" />
+                <ScalarProperty Name="cardNO" ColumnName="cardNO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
