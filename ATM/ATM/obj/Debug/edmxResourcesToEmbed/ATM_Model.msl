@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ATM_DBModelStoreContainer" CdmEntityContainer="ATM_DBEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="ATM_DBModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="accountID" ColumnName="accountID" />
+          <ScalarProperty Name="pin" ColumnName="pin" />
+          <ScalarProperty Name="balance" ColumnName="balance" />
+          <ScalarProperty Name="dayLimitUsed" ColumnName="dayLimitUsed" />
+          <ScalarProperty Name="pt1" ColumnName="pt1" />
+          <ScalarProperty Name="pt2" ColumnName="pt2" />
+          <ScalarProperty Name="pt3" ColumnName="pt3" />
+          <ScalarProperty Name="pt4" ColumnName="pt4" />
+          <ScalarProperty Name="pt5" ColumnName="pt5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ATM_DBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
