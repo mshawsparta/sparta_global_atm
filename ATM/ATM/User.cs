@@ -11,7 +11,9 @@ namespace ATM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +23,18 @@ namespace ATM
         }
     
         public int userID { get; set; }
+
+        [DisplayName("User Name")]
+        [Required]
         public string userName { get; set; }
+
+        [Required]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+(@spartaglobal\.com)$", ErrorMessage = "Registration limited to 'spartaglobal.com'.")]
+
         public string email { get; set; }
+
+        [DisplayName("Password")]
+        [Required]
         public string userPassword { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

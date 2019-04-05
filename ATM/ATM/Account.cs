@@ -11,11 +11,15 @@ namespace ATM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Account
     {
         public int accountID { get; set; }
+        [Range(0, 9999, ErrorMessage = "Please enter a four digit number")]
         public Nullable<int> pin { get; set; }
+
         public Nullable<double> balance { get; set; }
         public Nullable<double> dayLimitUsed { get; set; }
         public Nullable<double> pt1 { get; set; }
@@ -23,7 +27,8 @@ namespace ATM
         public Nullable<double> pt3 { get; set; }
         public Nullable<double> pt4 { get; set; }
         public Nullable<double> pt5 { get; set; }
-        public Nullable<int> cardNO { get; set; }
+        [DisplayName("Card Number")]
+        [Range(0, 999999999, ErrorMessage = "Please enter a nine digit number")] public Nullable<int> cardNO { get; set; }
         public int userID { get; set; }
     
         public virtual User User { get; set; }
