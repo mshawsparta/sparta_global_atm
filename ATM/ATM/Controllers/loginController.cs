@@ -10,116 +10,133 @@ using ATM;
 
 namespace ATM.Controllers
 {
-    public class AccountsController : Controller
+    public class loginController : Controller
     {
         private ATM_DBEntities2 db = new ATM_DBEntities2();
 
-        // GET: Accounts
-        public ActionResult Index()
+        // GET: login
+        public ActionResult LogOut()
         {
-            if (@Session["firstName"] == null)
-            {
-                return RedirectToAction("Login", "Login");
-            }
-            var accounts = db.Accounts.Include(a => a.User);
-            return View(accounts.ToList());
+            Session.Clear();
+            Session.Abandon(); // it will clear the session at the end of request
+            return RedirectToAction("index", "Home");
         }
 
-        // GET: Accounts/Details/5
+        // GET: Login
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(User user)
+        {
+            User us = db.Users.FirstOrDefault(u => u.email.Equals(user.email) && u.userPassword.Equals(user.userPassword));
+            if (us == null)
+            {
+                return RedirectToAction("login", "login");
+            }
+            else
+            {
+                Session["Email"] = us.email;
+                Session["firstName"] = us.userName;
+                return RedirectToAction("Index", "Home");
+            }
+
+        }
+
+        // GET: login/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(user);
         }
 
-        // GET: Accounts/Create
+        // GET: login/Create
         public ActionResult Create()
         {
-            ViewBag.userID = new SelectList(db.Users, "userID", "userName");
             return View();
         }
 
-        // POST: Accounts/Create
+        // POST: login/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "accountID,pin,balance,dayLimitUsed,pt1,pt2,pt3,pt4,pt5,cardNO,userID")] Account account)
+        public ActionResult Create([Bind(Include = "userID,userName,email,userPassword")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Accounts.Add(account);
+                db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.userID = new SelectList(db.Users, "userID", "userName", account.userID);
-            return View(account);
+            return View(user);
         }
 
-        // GET: Accounts/Edit/5
+        // GET: login/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.userID = new SelectList(db.Users, "userID", "userName", account.userID);
-            return View(account);
+            return View(user);
         }
 
-        // POST: Accounts/Edit/5
+        // POST: login/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "accountID,pin,balance,dayLimitUsed,pt1,pt2,pt3,pt4,pt5,cardNO,userID")] Account account)
+        public ActionResult Edit([Bind(Include = "userID,userName,email,userPassword")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(account).State = EntityState.Modified;
+                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.userID = new SelectList(db.Users, "userID", "userName", account.userID);
-            return View(account);
+            return View(user);
         }
 
-        // GET: Accounts/Delete/5
+        // GET: login/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(user);
         }
 
-        // POST: Accounts/Delete/5
+        // POST: login/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Account account = db.Accounts.Find(id);
-            db.Accounts.Remove(account);
+            User user = db.Users.Find(id);
+            db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
